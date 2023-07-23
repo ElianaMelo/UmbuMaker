@@ -2,6 +2,10 @@ package br.edu.ifpb.umbumaker.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,18 +14,22 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class ContaAcesso {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("ContaAcesso")
+public class ContaAcesso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nome;
     private String email;
     private String senha;
-    private String nome;
     private String telefone;
-    private String qrcode;
-    private boolean ativo;
     private String linkWhatsapp;
+    private boolean ativo;
+    @Column(insertable=false, updatable=false)
+    private String tipo;
+    private String qrcode;
     
 	public Long getId() {
 		return id;
@@ -71,5 +79,13 @@ public abstract class ContaAcesso {
 	public void setLinkWhatsapp(String linkWhatsapp) {
 		this.linkWhatsapp = linkWhatsapp;
 	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
     
 }

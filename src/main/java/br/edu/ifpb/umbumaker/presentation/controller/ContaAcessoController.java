@@ -18,12 +18,14 @@ public class ContaAcessoController {
     @Autowired
     private ContaAcessoService contaAcessoService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<ContaAcesso> criarContaAcesso(@RequestBody ContaAcesso contaAcesso) {
         ContaAcesso novaContaAcesso = contaAcessoService.criarContaAcesso(contaAcesso);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaContaAcesso);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{id}")
     public ResponseEntity<ContaAcesso> atualizarContaAcesso(@PathVariable Long id, @RequestBody ContaAcesso contaAcesso) {
         try {
@@ -34,6 +36,7 @@ public class ContaAcessoController {
         }
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarContaAcesso(@PathVariable Long id) {
         try {
@@ -44,6 +47,7 @@ public class ContaAcessoController {
         }
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<List<ContaAcesso>> listarContasAcesso() {
         List<ContaAcesso> contasAcesso = contaAcessoService.listarContasAcesso();
