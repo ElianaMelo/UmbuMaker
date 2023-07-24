@@ -1,5 +1,6 @@
 package br.edu.ifpb.umbumaker.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -17,7 +18,7 @@ import jakarta.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("ContaAcesso")
-public class ContaAcesso {
+public class ContaAcesso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
