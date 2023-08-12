@@ -1,33 +1,61 @@
 package br.edu.ifpb.umbumaker.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+
+//ContaAcesso sem implementação do DTO
+//ContaAcesso tem Repository, tem Service, más, não tem controler
+//esta havendo um encapiçulamento danado de contaAcesso em Gestor :-D
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class ContaAcesso {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String email;
-    private String senha;
-    private String nome;
-    private String telefone;
-    private String qrcode;
-    private boolean ativo;
-    private String linkWhatsapp;
+public class ContaAcesso implements Serializable {
     
-	public Long getId() {
-		return id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idContaAcesso;
+	private String nome;
+	private String email;
+	private String senha;
+	private String telefone;
+	private String linkWhatsapp;
+	private boolean ativo;
+	private String qrcode;
+	
+	public ContaAcesso(String nome, String email, String senha, String telefone,
+			String linkWhatsapp, boolean ativo, String qrcode) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.telefone = telefone;
+		this.linkWhatsapp = linkWhatsapp;
+		this.ativo = ativo;
+		this.qrcode = qrcode;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	
+	public ContaAcesso() {
+		
+	}
+
+	public Long getIdContaAcesso() {
+		return idContaAcesso;
+	}
+	public void setIdContaAcesso(Long idContaAcesso) {
+		this.idContaAcesso = idContaAcesso;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getEmail() {
 		return email;
@@ -41,29 +69,11 @@ public abstract class ContaAcesso {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public String getTelefone() {
 		return telefone;
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-	public String getQrcode() {
-		return qrcode;
-	}
-	public void setQrcode(String qrcode) {
-		this.qrcode = qrcode;
-	}
-	public boolean isAtivo() {
-		return ativo;
-	}
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
 	}
 	public String getLinkWhatsapp() {
 		return linkWhatsapp;
@@ -71,5 +81,19 @@ public abstract class ContaAcesso {
 	public void setLinkWhatsapp(String linkWhatsapp) {
 		this.linkWhatsapp = linkWhatsapp;
 	}
+	public boolean isAtivo() {
+		return ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	public String getQrcode() {
+		return qrcode;
+	}
+	public void setQrcode(String qrcode) {
+		this.qrcode = qrcode;
+	}
+	
+	
     
 }
