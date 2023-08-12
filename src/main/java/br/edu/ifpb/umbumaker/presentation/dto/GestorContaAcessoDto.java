@@ -1,31 +1,31 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
+import br.edu.ifpb.umbumaker.model.ContaAcesso;
 import br.edu.ifpb.umbumaker.model.Gestor;
 
-public class GestorDto implements IDto<Gestor>{
+public class GestorContaAcessoDto implements IDto<Gestor>{
 	
-	private String nome;
-	private String email;
+	private String nome; 
+	private String email; 
 	private String senha;
 	private String telefone;
 	private String linkWhatsapp;
 	private boolean ativo;
 	private String qrcode;
 	
-	public GestorDto(String nome, String email, String senha, String telefone,
-			String linkWhatsapp, boolean ativo, String qrcode) {
+	public GestorContaAcessoDto(Gestor gestor) {
 		
-		this.nome = nome; 
-		this.email = email; 
-		this.senha = senha;
-		this.telefone = telefone;
-		this.linkWhatsapp = linkWhatsapp;
-		this.ativo = ativo;
-		this.qrcode = qrcode;
+		this.nome = gestor.getContaAcesso().getNome(); 
+		this.email = gestor.getContaAcesso().getEmail(); 
+		this.senha = gestor.getContaAcesso().getSenha();
+		this.telefone = gestor.getContaAcesso().getTelefone();
+		this.linkWhatsapp = gestor.getContaAcesso().getLinkWhatsapp();
+		this.ativo = gestor.getContaAcesso().isAtivo();
+		this.qrcode = gestor.getContaAcesso().getQrcode();
 		
 	}
 	
-	public GestorDto() {
+	public GestorContaAcessoDto() {
 		
 	}
 
@@ -84,12 +84,21 @@ public class GestorDto implements IDto<Gestor>{
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
 	}
+	
+
+//	public Gestor getGestor() {
+//		return gestor;
+//	}
+//
+//	public void setGestor(Gestor gestor) {
+//		this.gestor = gestor;
+//	}
 
 	@Override
 	public Gestor toModel() {
 		// TODO Auto-generated method stub
-		return new Gestor(this.nome,this.email,this.senha,this.telefone,
-				this.linkWhatsapp,this.ativo,this.qrcode);
+		return new Gestor(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
+				this.linkWhatsapp, this.ativo, this.qrcode));
 	}
 	
 	

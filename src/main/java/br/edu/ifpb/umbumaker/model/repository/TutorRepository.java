@@ -1,15 +1,12 @@
 package br.edu.ifpb.umbumaker.model.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifpb.umbumaker.model.Gestor;
+import br.edu.ifpb.umbumaker.model.Tutor;
 
 @Repository
-public interface GestorRepository extends JpaRepository<Gestor, Long> {
+public interface TutorRepository extends JpaRepository<Tutor, Long> {
 	
-	//List<Gestor> findByNome(String nome);
 
 }

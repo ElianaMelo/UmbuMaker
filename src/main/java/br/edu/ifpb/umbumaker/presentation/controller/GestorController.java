@@ -2,7 +2,6 @@ package br.edu.ifpb.umbumaker.presentation.controller;
 
 import java.util.List;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.GestorService;
 import br.edu.ifpb.umbumaker.model.Gestor;
-import br.edu.ifpb.umbumaker.presentation.dto.GestorDto;
-//import br.edu.ifpb.umbumaker.presentation.dto.GestorResponseDto;
+import br.edu.ifpb.umbumaker.presentation.dto.GestorContaAcessoDto;
+
+
+//acho que esta indo bem 
 
 @RestController
 @RequestMapping("/api/umbumake")
@@ -29,13 +30,13 @@ public class GestorController {
 	
 	//converter para lista de dtos?
 	@GetMapping("/gestores")
-    public ResponseEntity<List<Gestor>> listarGestor(){
-        return ResponseEntity.status(HttpStatus.OK).body(gestorService.listarGestor());
-    }
-	
+    public ResponseEntity<Iterable<Gestor>> listarGestor(){
+		Iterable<Gestor> gestores = gestorService.listarGestor();
+		return ResponseEntity.status(HttpStatus.OK).body(gestores);
+    }	
 	
 	@PostMapping("/gestores")
-	public ResponseEntity<Object> criarGestor(@RequestBody GestorDto gestorDto) {
+	public ResponseEntity<Object> criarGestor(@RequestBody GestorContaAcessoDto gestorDto) {
 		try {
 			Gestor gestorCriado = gestorService.criarGestor(gestorDto.toModel());
 			return new ResponseEntity<Object>(gestorCriado.toDto(), HttpStatus.CREATED);
@@ -44,13 +45,9 @@ public class GestorController {
 		}
 	}
 	
-	// Analizar como vai ser utilizado o DTO, se for para utlizar o "BeanUtils"
-	//vamos ter que utilizar dois tipo de DTO, o de entrada e o de saida.
-	//No momento esse metodo só esta copiando o objeto gestor, não esta
-	// oferencendo nenhuna segurança de dados
 	@PutMapping("/gestores/{id}")
 	public ResponseEntity<Object> atualizarGestor(@PathVariable(value = "id") Long id,
-			@RequestBody GestorDto gestorDto){
+			@RequestBody GestorContaAcessoDto gestorDto){
 		try {			
 			Gestor gestoratualizado = gestorService.atualizarGestor(id, gestorDto.toModel());
 			return ResponseEntity.status(HttpStatus.OK).body(gestoratualizado.toDto());
