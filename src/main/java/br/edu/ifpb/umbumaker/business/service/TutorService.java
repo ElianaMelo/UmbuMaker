@@ -1,19 +1,29 @@
 package br.edu.ifpb.umbumaker.business.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.umbumaker.model.Tutor;
+import br.edu.ifpb.umbumaker.model.repository.ContaAcessoRepository;
 import br.edu.ifpb.umbumaker.model.repository.TutorRepository;
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class TutorService {
+	
+	@Autowired
+	private ContaAcessoRepository contaAcessoRepository;
 
 	@Autowired
 	private TutorRepository tutorRepository;
 
 	public Tutor criarTutor(Tutor tutor) {
+		//salvando conta acesso
+		contaAcessoRepository.save(tutor.getContaAcesso());
+		
 		return tutorRepository.save(tutor);
 	}
 
@@ -21,24 +31,32 @@ public class TutorService {
 		Tutor tutorExitente = tutorRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Tutor não encontrado."));
 
-//		tutorExitente.nome = tutor.nome;
-//		tutorExitente.email = tutor.email;
-//		tutorExitente.senha = tutor.senha;
-//		tutorExitente.telefone = tutor.telefone;
-//		tutorExitente.linkWhatsapp = tutor.linkWhatsapp;
-//		tutorExitente.ativo = tutor.ativo;
-//		tutorExitente.tipo = tutor.tipo;
-//		tutorExitente.qrcode = tutor.qrcode;
+		tutorExitente.getContaAcesso().setNome(tutor.getContaAcesso().getNome());
+		tutorExitente.getContaAcesso().setEmail(tutor.getContaAcesso().getEmail());
+		tutorExitente.getContaAcesso().setSenha(tutor.getContaAcesso().getSenha());
+		tutorExitente.getContaAcesso().setTelefone(tutor.getContaAcesso().getTelefone());
+		tutorExitente.getContaAcesso().setLinkWhatsapp(tutor.getContaAcesso().getLinkWhatsapp());
+		tutorExitente.getContaAcesso().setAtivo(tutor.getContaAcesso().isAtivo());
+		tutorExitente.getContaAcesso().setQrcode(tutor.getContaAcesso().getQrcode());
+		
+		//salvando conta acesso
+		contaAcessoRepository.save(tutorExitente.getContaAcesso());
 
 		return tutorRepository.save(tutorExitente);
 	}
 
 	public void deletarTutor(Long id) {
-		if (!tutorRepository.existsById(id)) {
-			throw new EntityNotFoundException("Tutor não encontrado.");
-		}
+		Optional<Tutor> tutor = tutorRepository.findById(id);
+        if (tutor.isEmpty()) {
+            throw new EntityNotFoundException("Tutor não encontrado.");
+        }
 
-		tutorRepository.deleteById(id);
+      //deletar gestor
+        tutorRepository.deleteById(id);
+        
+      //deletar conta acesso
+      	contaAcessoRepository.deleteById(tutor.get().getContaAcesso().getIdContaAcesso());
+
 	}
 
 	public List<Tutor> listarTutor() {
