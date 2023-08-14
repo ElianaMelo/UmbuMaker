@@ -14,10 +14,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Gestor implements IModel<GestorContaAcessoDto>{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGestor;

@@ -11,10 +11,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Tutor implements IModel<TutorContaAcessoDto> {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTutor;

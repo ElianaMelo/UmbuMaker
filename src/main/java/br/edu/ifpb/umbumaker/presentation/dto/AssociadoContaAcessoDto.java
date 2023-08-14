@@ -1,9 +1,9 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
+import br.edu.ifpb.umbumaker.model.Associado;
 import br.edu.ifpb.umbumaker.model.ContaAcesso;
-import br.edu.ifpb.umbumaker.model.Tutor;
 
-public class TutorContaAcessoDto implements IDto<Tutor>{
+public class AssociadoContaAcessoDto implements IDto<Associado>{
 	
 	private String nome; 
 	private String email; 
@@ -13,19 +13,19 @@ public class TutorContaAcessoDto implements IDto<Tutor>{
 	private boolean ativo;
 	private String qrcode;
 	
-	public TutorContaAcessoDto(Tutor tutor) {
+	public AssociadoContaAcessoDto(Associado associado) {
 		
-		this.nome = tutor.getContaAcesso().getNome(); 
-		this.email = tutor.getContaAcesso().getEmail(); 
-		this.senha = tutor.getContaAcesso().getSenha();
-		this.telefone = tutor.getContaAcesso().getTelefone();
-		this.linkWhatsapp = tutor.getContaAcesso().getLinkWhatsapp();
-		this.ativo = tutor.getContaAcesso().isAtivo();
-		this.qrcode = tutor.getContaAcesso().getQrcode();
+		this.nome = associado.getContaAcesso().getNome(); 
+		this.email = associado.getContaAcesso().getEmail(); 
+		this.senha = associado.getContaAcesso().getSenha();
+		this.telefone = associado.getContaAcesso().getTelefone();
+		this.linkWhatsapp = associado.getContaAcesso().getLinkWhatsapp();
+		this.ativo = associado.getContaAcesso().isAtivo();
+		this.qrcode = associado.getContaAcesso().getQrcode();
 		
 	}
 	
-	public TutorContaAcessoDto() {
+	public AssociadoContaAcessoDto() {
 		
 	}
 
@@ -86,18 +86,10 @@ public class TutorContaAcessoDto implements IDto<Tutor>{
 	}
 	
 
-//	public Gestor getGestor() {
-//		return gestor;
-//	}
-//
-//	public void setGestor(Gestor gestor) {
-//		this.gestor = gestor;
-//	}
-
 	@Override
-	public Tutor toModel() {
+	public Associado toModel() {
 		// TODO Auto-generated method stub
-		return new Tutor(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
+		return new Associado(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
 				this.linkWhatsapp, this.ativo, this.qrcode));
 	}
 	

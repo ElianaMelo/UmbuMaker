@@ -1,6 +1,5 @@
 package br.edu.ifpb.umbumaker.presentation.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpb.umbumaker.business.service.GestorService;
 import br.edu.ifpb.umbumaker.business.service.TutorService;
-import br.edu.ifpb.umbumaker.model.Gestor;
 import br.edu.ifpb.umbumaker.model.Tutor;
-import br.edu.ifpb.umbumaker.presentation.dto.GestorContaAcessoDto;
 import br.edu.ifpb.umbumaker.presentation.dto.TutorContaAcessoDto;
 
 
@@ -47,7 +43,7 @@ public class TutorController {
 		}
 	}
 	
-	@PutMapping("/tutor/{id}")
+	@PutMapping("/tutores/{id}")
 	public ResponseEntity<Object> atualizarTutor(@PathVariable(value = "id") Long id,
 			@RequestBody TutorContaAcessoDto tutorDto){
 		try {			
@@ -59,7 +55,7 @@ public class TutorController {
 		}
 	}
 	
-	@DeleteMapping("/tutor/{id}")
+	@DeleteMapping("/tutores/{id}")
     public ResponseEntity<Object> deleteTutor(@PathVariable(value = "id") Long id){
         
         tutorService.deletarTutor(id);
