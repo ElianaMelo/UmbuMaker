@@ -20,7 +20,7 @@ import br.edu.ifpb.umbumaker.presentation.dto.TutorContaAcessoDto;
 //acho que esta indo bem 
 
 @RestController
-@RequestMapping("/api/umbumake")
+@RequestMapping("/api/umbumaker")
 public class TutorController {
 	
 	@Autowired

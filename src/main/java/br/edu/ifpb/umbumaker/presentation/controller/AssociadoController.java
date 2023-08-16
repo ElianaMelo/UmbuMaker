@@ -20,7 +20,7 @@ import br.edu.ifpb.umbumaker.presentation.dto.AssociadoContaAcessoDto;
 //acho que esta indo bem 
 
 @RestController
-@RequestMapping("/api/umbumake")
+@RequestMapping("/api/umbumaker")
 public class AssociadoController {
 	
 	@Autowired
@@ -61,10 +61,6 @@ public class AssociadoController {
 		associadoService.deletarAssociado(id);
         return ResponseEntity.status(HttpStatus.OK).body("Associado deletado com sulcesso.");
     }
-	
-	
-
-	
 	
 
 }

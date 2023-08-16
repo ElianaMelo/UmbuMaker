@@ -21,7 +21,7 @@ import br.edu.ifpb.umbumaker.presentation.dto.GestorContaAcessoDto;
 //acho que esta indo bem 
 
 @RestController
-@RequestMapping("/api/umbumake")
+@RequestMapping("/api/umbumaker")
 public class GestorController {
 	
 	@Autowired
