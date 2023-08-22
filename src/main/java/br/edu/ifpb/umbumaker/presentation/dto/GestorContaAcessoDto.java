@@ -12,6 +12,7 @@ public class GestorContaAcessoDto implements IDto<Gestor>{
 	private String linkWhatsapp;
 	private boolean ativo;
 	private String qrcode;
+	private String tipo;
 	
 	public GestorContaAcessoDto(Gestor gestor) {
 		
@@ -22,6 +23,7 @@ public class GestorContaAcessoDto implements IDto<Gestor>{
 		this.linkWhatsapp = gestor.getContaAcesso().getLinkWhatsapp();
 		this.ativo = gestor.getContaAcesso().isAtivo();
 		this.qrcode = gestor.getContaAcesso().getQrcode();
+		this.tipo = gestor.getContaAcesso().getTipo();
 		
 	}
 	
@@ -85,6 +87,7 @@ public class GestorContaAcessoDto implements IDto<Gestor>{
 		this.qrcode = qrcode;
 	}
 	
+	
 
 //	public Gestor getGestor() {
 //		return gestor;
@@ -94,11 +97,19 @@ public class GestorContaAcessoDto implements IDto<Gestor>{
 //		this.gestor = gestor;
 //	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public Gestor toModel() {
 		// TODO Auto-generated method stub
 		return new Gestor(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
-				this.linkWhatsapp, this.ativo, this.qrcode));
+				this.linkWhatsapp, this.ativo, this.qrcode, this.tipo));
 	}
 	
 	

@@ -1,7 +1,6 @@
 package br.edu.ifpb.umbumaker.model;
 
-import java.io.Serializable;
-
+import br.edu.ifpb.umbumaker.presentation.dto.ContaAcessoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,12 +11,8 @@ import jakarta.persistence.Id;
 //esta havendo um encapiçulamento danado de contaAcesso em Gestor :-D
 
 @Entity
-public class ContaAcesso implements Serializable {
+public class ContaAcesso implements IModel<ContaAcessoDto> {
     
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idContaAcesso;
@@ -28,9 +23,10 @@ public class ContaAcesso implements Serializable {
 	private String linkWhatsapp;
 	private boolean ativo;
 	private String qrcode;
+	private String tipo;
 	
 	public ContaAcesso(String nome, String email, String senha, String telefone,
-			String linkWhatsapp, boolean ativo, String qrcode) {
+			String linkWhatsapp, boolean ativo, String qrcode, String tipo) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -39,6 +35,7 @@ public class ContaAcesso implements Serializable {
 		this.linkWhatsapp = linkWhatsapp;
 		this.ativo = ativo;
 		this.qrcode = qrcode;
+		this.tipo = tipo;
 	}
 	
 	public ContaAcesso() {
@@ -92,6 +89,21 @@ public class ContaAcesso implements Serializable {
 	}
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	@Override
+	public ContaAcessoDto toDto() {
+		// TODO Auto-generated method stub
+		return new ContaAcessoDto(this.nome, this.email, this.senha, this.telefone,
+				this.linkWhatsapp, this.ativo, this.qrcode,this.tipo);
 	}
 	
 	

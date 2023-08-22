@@ -1,5 +1,6 @@
 package br.edu.ifpb.umbumaker.business.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,10 +73,21 @@ public class GestorService {
         return gestorRepository.findAll();
     }
     
-//lestar gestor por nome esta dando erro porque Gesrto não tem esse atributo,
+//mestar gestor por nome esta dando erro porque Gesrto não tem esse atributo,
 //quem tem esse atributo é a ContaAcesso
-//    public List<Gestor> listarGestorPorNome(String nome) {
-//        return gestorRepository.findByNome(nome);
-//    }
+    public List<Gestor> listarGestorPorNome(String nome) {
+    	ArrayList<Gestor> gestores = new ArrayList<Gestor>();
+    	for (Gestor gestor : listarGestor()) {
+    		if(gestor.getContaAcesso().getNome().equals(nome)) {
+    			gestores.add(gestor);
+    		}
+    	}
+    	
+    	if (gestores.isEmpty()) {
+            throw new EntityNotFoundException("Gestor não encontrado.");
+        }
+    	
+        return gestores;
+    }
 
 }

@@ -34,6 +34,19 @@ public class GestorController {
 		return ResponseEntity.status(HttpStatus.OK).body(gestores);
     }	
 	
+//	@GetMapping("/{id}")
+//    public ResponseEntity<Instructor> findById(@PathVariable (value = "id") Long id){
+//        return instructorService.findById(id).map(instructor ->ResponseEntity.ok(instructor))
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+//
+    @GetMapping("name/{name}")
+    public ResponseEntity<Iterable<Gestor>> getByName(@PathVariable("name") String nome){
+    	Iterable<Gestor> gestores = gestorService.listarGestorPorNome(nome);
+		return ResponseEntity.status(HttpStatus.OK).body(gestores);
+    }
+	
+	
 	@PostMapping("/gestores")
 	public ResponseEntity<Object> criarGestor(@RequestBody GestorContaAcessoDto gestorDto) {
 		try {
@@ -63,9 +76,4 @@ public class GestorController {
         return ResponseEntity.status(HttpStatus.OK).body("Gestor deletado com sulcesso.");
     }
 	
-	
-
-	
-	
-
 }

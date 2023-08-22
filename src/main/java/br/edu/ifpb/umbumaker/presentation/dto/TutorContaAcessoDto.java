@@ -12,6 +12,7 @@ public class TutorContaAcessoDto implements IDto<Tutor>{
 	private String linkWhatsapp;
 	private boolean ativo;
 	private String qrcode;
+	private String tipo;
 	
 	public TutorContaAcessoDto(Tutor tutor) {
 		
@@ -22,6 +23,7 @@ public class TutorContaAcessoDto implements IDto<Tutor>{
 		this.linkWhatsapp = tutor.getContaAcesso().getLinkWhatsapp();
 		this.ativo = tutor.getContaAcesso().isAtivo();
 		this.qrcode = tutor.getContaAcesso().getQrcode();
+		this.tipo = tutor.getContaAcesso().getTipo();
 		
 	}
 	
@@ -84,21 +86,20 @@ public class TutorContaAcessoDto implements IDto<Tutor>{
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
 	}
-	
 
-//	public Gestor getGestor() {
-//		return gestor;
-//	}
-//
-//	public void setGestor(Gestor gestor) {
-//		this.gestor = gestor;
-//	}
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	@Override
 	public Tutor toModel() {
 		// TODO Auto-generated method stub
 		return new Tutor(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
-				this.linkWhatsapp, this.ativo, this.qrcode));
+				this.linkWhatsapp, this.ativo, this.qrcode, this.tipo));
 	}
 	
 	

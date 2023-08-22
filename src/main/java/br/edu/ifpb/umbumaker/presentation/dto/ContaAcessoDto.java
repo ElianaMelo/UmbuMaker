@@ -3,7 +3,7 @@ package br.edu.ifpb.umbumaker.presentation.dto;
 import br.edu.ifpb.umbumaker.model.Associado;
 import br.edu.ifpb.umbumaker.model.ContaAcesso;
 
-public class AssociadoContaAcessoDto implements IDto<Associado>{
+public class ContaAcessoDto implements IDto<ContaAcesso>{
 	
 	private String nome; 
 	private String email; 
@@ -14,20 +14,21 @@ public class AssociadoContaAcessoDto implements IDto<Associado>{
 	private String qrcode;
 	private String tipo;
 	
-	public AssociadoContaAcessoDto(Associado associado) {
+	public ContaAcessoDto(String nome, String email, String senha, String telefone,
+			String linkWhatsapp, boolean ativo, String qrcode, String tipo) {
 		
-		this.nome = associado.getContaAcesso().getNome(); 
-		this.email = associado.getContaAcesso().getEmail(); 
-		this.senha = associado.getContaAcesso().getSenha();
-		this.telefone = associado.getContaAcesso().getTelefone();
-		this.linkWhatsapp = associado.getContaAcesso().getLinkWhatsapp();
-		this.ativo = associado.getContaAcesso().isAtivo();
-		this.qrcode = associado.getContaAcesso().getQrcode();
-		this.tipo = associado.getContaAcesso().getTipo();
+		this.nome = nome; 
+		this.email = email; 
+		this.senha = senha;
+		this.telefone = telefone;
+		this.linkWhatsapp = linkWhatsapp;
+		this.ativo = ativo;
+		this.qrcode = qrcode;
+		this.tipo = tipo;
 		
 	}
 	
-	public AssociadoContaAcessoDto() {
+	public ContaAcessoDto() {
 		
 	}
 
@@ -86,7 +87,7 @@ public class AssociadoContaAcessoDto implements IDto<Associado>{
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
 	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -96,10 +97,10 @@ public class AssociadoContaAcessoDto implements IDto<Associado>{
 	}
 
 	@Override
-	public Associado toModel() {
+	public ContaAcesso toModel() {
 		// TODO Auto-generated method stub
-		return new Associado(new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
-				this.linkWhatsapp, this.ativo, this.qrcode, this.tipo));
+		return new ContaAcesso(this.nome, this.email, this.senha, this.telefone,
+				this.linkWhatsapp, this.ativo, this.qrcode, this.tipo);
 	}
 	
 	
