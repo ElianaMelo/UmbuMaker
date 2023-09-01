@@ -17,7 +17,7 @@ public class Gestor implements IModel<GestorContaAcessoDto>{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idGestor;
+    private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idContaAcesso")
@@ -32,11 +32,11 @@ public class Gestor implements IModel<GestorContaAcessoDto>{
 	}
 
 	public Long getIdGestor() {
-		return idGestor;
+		return id;
 	}
 
-	public void setIdGestor(Long idGestor) {
-		this.idGestor = idGestor;
+	public void setIdGestor(Long id) {
+		this.id = id;
 	}
 
 	public ContaAcesso getContaAcesso() {

@@ -14,7 +14,7 @@ public class Tutor implements IModel<TutorContaAcessoDto> {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTutor;
+    private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idContaAcesso")
@@ -31,11 +31,11 @@ public class Tutor implements IModel<TutorContaAcessoDto> {
 	}
 
 	public Long getIdTutor() {
-		return idTutor;
+		return id;
 	}
 
-	public void setIdTutor(Long idTutor) {
-		this.idTutor = idTutor;
+	public void setIdTutor(Long id) {
+		this.id = id;
 	}
 
 	public ContaAcesso getContaAcesso() {
