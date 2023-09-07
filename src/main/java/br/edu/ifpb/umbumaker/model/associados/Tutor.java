@@ -1,7 +1,9 @@
-package br.edu.ifpb.umbumaker.model;
+package br.edu.ifpb.umbumaker.model.associados;
 
+import br.edu.ifpb.umbumaker.model.IModel;
 import br.edu.ifpb.umbumaker.presentation.dto.TutorContaAcessoDto;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Tutor implements IModel<TutorContaAcessoDto> {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
     private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)

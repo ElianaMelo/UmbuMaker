@@ -1,5 +1,6 @@
-package br.edu.ifpb.umbumaker.model;
+package br.edu.ifpb.umbumaker.model.associados;
 
+import br.edu.ifpb.umbumaker.model.IModel;
 import br.edu.ifpb.umbumaker.presentation.dto.ContaAcessoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,7 +1,7 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
-import br.edu.ifpb.umbumaker.model.ContaAcesso;
-import br.edu.ifpb.umbumaker.model.Gestor;
+import br.edu.ifpb.umbumaker.model.associados.ContaAcesso;
+import br.edu.ifpb.umbumaker.model.associados.Gestor;
 
 public class GestorContaAcessoDto implements IDto<Gestor>{
 	

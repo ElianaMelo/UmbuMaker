@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.GestorService;
-import br.edu.ifpb.umbumaker.model.Gestor;
+import br.edu.ifpb.umbumaker.model.associados.Gestor;
 import br.edu.ifpb.umbumaker.presentation.dto.GestorContaAcessoDto;
 
 

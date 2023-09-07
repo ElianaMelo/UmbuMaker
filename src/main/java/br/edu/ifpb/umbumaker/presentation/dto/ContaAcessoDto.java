@@ -1,7 +1,7 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
-import br.edu.ifpb.umbumaker.model.Associado;
-import br.edu.ifpb.umbumaker.model.ContaAcesso;
+import br.edu.ifpb.umbumaker.model.associados.Associado;
+import br.edu.ifpb.umbumaker.model.associados.ContaAcesso;
 
 public class ContaAcessoDto implements IDto<ContaAcesso>{
 	

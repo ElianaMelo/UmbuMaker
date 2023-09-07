@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.umbumaker.model.Tutor;
+import br.edu.ifpb.umbumaker.model.associados.Tutor;
 import br.edu.ifpb.umbumaker.model.repository.ContaAcessoRepository;
 import br.edu.ifpb.umbumaker.model.repository.TutorRepository;
 import jakarta.persistence.EntityNotFoundException;

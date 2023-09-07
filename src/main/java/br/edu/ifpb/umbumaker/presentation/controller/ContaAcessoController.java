@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.edu.ifpb.umbumaker.business.service.ContaAcessoService;
-import br.edu.ifpb.umbumaker.model.ContaAcesso;
+import br.edu.ifpb.umbumaker.model.associados.ContaAcesso;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;

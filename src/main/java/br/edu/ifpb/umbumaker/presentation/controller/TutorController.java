@@ -1,5 +1,8 @@
 package br.edu.ifpb.umbumaker.presentation.controller;
 
+import java.util.ArrayList;
+
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.TutorService;
-import br.edu.ifpb.umbumaker.model.Tutor;
+import br.edu.ifpb.umbumaker.model.associados.Tutor;
 import br.edu.ifpb.umbumaker.presentation.dto.TutorContaAcessoDto;
 
 

@@ -3,7 +3,7 @@ package br.edu.ifpb.umbumaker.business.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.umbumaker.model.ContaAcesso;
+import br.edu.ifpb.umbumaker.model.associados.ContaAcesso;
 import br.edu.ifpb.umbumaker.model.repository.ContaAcessoRepository;
 import jakarta.persistence.EntityNotFoundException;
 

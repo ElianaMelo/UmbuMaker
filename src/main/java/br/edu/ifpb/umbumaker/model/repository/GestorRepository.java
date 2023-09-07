@@ -1,11 +1,9 @@
 package br.edu.ifpb.umbumaker.model.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifpb.umbumaker.model.Gestor;
+import br.edu.ifpb.umbumaker.model.associados.Gestor;
 
 @Repository
 public interface GestorRepository extends JpaRepository<Gestor, Long> {

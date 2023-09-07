@@ -1,5 +1,7 @@
 package br.edu.ifpb.umbumaker.presentation.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.AssociadoService;
-import br.edu.ifpb.umbumaker.model.Associado;
+import br.edu.ifpb.umbumaker.model.associados.Associado;
 import br.edu.ifpb.umbumaker.presentation.dto.AssociadoContaAcessoDto;
 
 
@@ -31,7 +33,17 @@ public class AssociadoController {
     public ResponseEntity<Iterable<Associado>> listarAssociados(){
 		Iterable<Associado> associados = associadoService.listarAssociados();
 		return ResponseEntity.status(HttpStatus.OK).body(associados);
-    }	
+    }
+	@GetMapping("/associados/{id}")
+    public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") Long id){
+		try {
+			Optional<Associado> associados = associadoService.listarPorId(id);
+			Associado associado = associados.get();
+			return ResponseEntity.status(HttpStatus.OK).body(associado.toDto());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		}
+    }
 	
 	@PostMapping("/associados")
 	public ResponseEntity<Object> criarAssociado(@RequestBody AssociadoContaAcessoDto associadoDto) {

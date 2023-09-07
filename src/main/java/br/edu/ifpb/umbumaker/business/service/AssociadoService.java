@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.umbumaker.model.Associado;
+import br.edu.ifpb.umbumaker.model.associados.Associado;
 import br.edu.ifpb.umbumaker.model.repository.AssociadoRepository;
 import br.edu.ifpb.umbumaker.model.repository.ContaAcessoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -70,6 +70,11 @@ public class AssociadoService {
     public List<Associado> listarAssociados() {
     	
         return associadoRepository.findAll();
+    }
+    
+    public Optional<Associado> listarPorId(Long id) {
+    	
+        return associadoRepository.findById(id);
     }
 
 }

@@ -1,4 +1,4 @@
-package br.edu.ifpb.umbumaker.model;
+package br.edu.ifpb.umbumaker.model.associados;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,7 +1,9 @@
-package br.edu.ifpb.umbumaker.model;
+package br.edu.ifpb.umbumaker.model.associados;
 
-import br.edu.ifpb.umbumaker.presentation.dto.GestorContaAcessoDto;
+import br.edu.ifpb.umbumaker.model.IModel;
+import br.edu.ifpb.umbumaker.presentation.dto.AssociadoContaAcessoDto;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,33 +11,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-//Gestor estar se convertando para GestorContaAcessoDto e esta passando 
-// a senha da conta, o que não deveria acontecer. :-X
-
 @Entity
-public class Gestor implements IModel<GestorContaAcessoDto>{
+public class Associado implements IModel<AssociadoContaAcessoDto>{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
     private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idContaAcesso")
 	private ContaAcesso contaAcesso;
-	
-	public Gestor(ContaAcesso contaAcesso) {
+
+	public Associado(ContaAcesso contaAcesso) {
+		super();
 		this.contaAcesso = contaAcesso;
 	}
-	
-	public Gestor() {
+
+	public Associado() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getIdGestor() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setIdGestor(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -48,10 +50,10 @@ public class Gestor implements IModel<GestorContaAcessoDto>{
 	}
 
 	@Override
-	public GestorContaAcessoDto toDto() {
+	public AssociadoContaAcessoDto toDto() {
 		// TODO Auto-generated method stub
-		return new GestorContaAcessoDto(this);
+		return new AssociadoContaAcessoDto(this);
 	}
 	
-
+	
 }

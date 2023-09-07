@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.umbumaker.model.Gestor;
+import br.edu.ifpb.umbumaker.model.associados.Gestor;
 import br.edu.ifpb.umbumaker.model.repository.ContaAcessoRepository;
 import br.edu.ifpb.umbumaker.model.repository.GestorRepository;
 import jakarta.persistence.EntityNotFoundException;
